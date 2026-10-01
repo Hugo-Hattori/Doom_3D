@@ -1,3 +1,5 @@
+from distutils.sysconfig import project_base
+
 import pygame as pg
 import math
 
@@ -11,7 +13,7 @@ class RayCasting:
     def ray_cast(self):
         ox, oy = self.game.player.pos
         x_map, y_map = self.game.player.map_pos
-        ray_angle = self.game.player.angle - HALF_RAYS + 0.0001
+        ray_angle = self.game.player.angle - FOV_HALF + 0.0001
         for ray in range(NUM_RAYS):
             #sin and cos of the ray
             sin_a = math.sin(ray_angle)
@@ -50,19 +52,26 @@ class RayCasting:
                 y_vert += dy
                 depth_vert += delta_depth
 
-            ray_angle += DELTA_ANGLE
-
             #shorter depth that will be used for wall collision of ray
             if depth_vert < depth_hor:
                 depth = depth_vert
             else:
                 depth = depth_hor
 
-            #draw line for debug
-            pg.draw.line(self.game.screen, 'yellow', (100*ox, 100*oy),
-                         (100*ox + 100*depth*cos_a, 100*oy + 100*depth*sin_a), 2)
+            # remove fishbowl effect
+            depth = depth * math.cos(self.game.player.angle - ray_angle)
+
+            # projection
+            proj_height = SCREEN_DIST / (depth + 0.0001)
+
+            # draw walls
+            color = [255 / (1 + depth ** 5 * 0.0002)] * 3
+            pg.draw.rect(self.game.screen, color,
+                         (ray * SCALE, HALF_HEIGHT - proj_height // 2 , SCALE, proj_height))
+
+            ray_angle += DELTA_ANGLE
+
 
     def update(self):
         self.ray_cast()
 
-#VIDEO TIME 10:20

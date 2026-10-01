@@ -50,7 +50,6 @@ class Player:
         if self.check_wall(int(self.x), int(self.y+dy)):
             self.y += dy
 
-#VIDEO TIME = 7:38
 
     def draw_player(self):
         #draw direction of movement
