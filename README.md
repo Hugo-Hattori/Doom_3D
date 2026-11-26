@@ -53,8 +53,10 @@ python main.py
 * 体力が `1` 未満になると **Game Over** 画面が表示され、自動的にゲームが最初からリスタートします。
 
 ### 実行画面
-* **3Dプレイ画面:** `![3D Gameplay](screenshots/gameplay_3d.png)`
-* **2Dデバッグ画面:** `![2D Debug View](screenshots/debug_2d.png)`
+* **3Dプレイ画面:** ![3D Gameplay](screenshots/gameplay_3d.png)
+
+
+* **2Dデバッグ画面:** ![2D Debug View](screenshots/debug_2d.png)
 
 ### 既知の問題・制限事項
 * **クリア画面・複数ステージの未実装:** 現在は1ステージ構成となっており、全NPCを倒した際の「ゲームクリア画面」や次ステージへの遷移機能は未実装です。
@@ -117,8 +119,10 @@ python main.py
 * If your health drops to `0`, the **Game Over** screen appears and the level automatically restarts.
 
 ### Screenshots
-* **3D Gameplay View:** `![3D Gameplay](screenshots/gameplay_3d.png)`
-* **2D Debug / Raycast View:** `![2D Debug View](screenshots/debug_2d.png)`
+* **3D Gameplay View:** ![3D Gameplay](screenshots/gameplay_3d.png)
+
+
+* **2D Debug / Raycast View:** ![2D Debug View](screenshots/debug_2d.png)
 
 ### Known Issues & Limitations
 * **Single Level / No Victory Screen:** The game currently features a single map (`map.py`) and automatically resets upon Game Over, without a dedicated "Stage Clear" screen when all NPCs are defeated.

@@ -10,7 +10,7 @@ class Player:
         self.shot = False
         self.health = PLAYER_MAX_HEALTH
         self.rel = 0
-        self.health_recovery_delay = 700
+        self.health_recovery_delay = 2000
         self.time_prev = pg.time.get_ticks()
 
     def recover_health(self):
