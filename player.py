@@ -11,6 +11,16 @@ class Player:
         self.health = PLAYER_MAX_HEALTH
         self.rel = 0
 
+    def recover_health(self):
+        if self.check_health_recovery_delay() and self.health < PLAYER_MAX_HEALTH:
+            self.health += 1
+
+    def check_health_recovery_delay(self):
+        time_now = pg.time.get_ticks()
+        if time_now - self.time_prev > self.health_recovery_delay:
+            self.time_prev = time_now
+            return True
+
     def check_game_over(self):
         if self.health < 1:
             self.game.object_renderer.game_over()
@@ -94,6 +104,7 @@ class Player:
     def update(self):
         self.movement()
         self.mouse_control()
+        self.recover_health()
 
     @property
     def pos(self):
