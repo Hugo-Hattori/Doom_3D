@@ -34,7 +34,6 @@ class NPC(AnimatedSprite):
         if PROJECTION_MODE == '2D':
             self.draw_ray_cast()
 
-
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map
 
@@ -58,6 +57,8 @@ class NPC(AnimatedSprite):
     def attack(self):
         if self.animation_trigger:
             self.game.sound.npc_shot.play()
+            if random() < self.accuracy:
+                self.game.player.get_damage(self.damage_attack)
 
     def animate_death(self):
         if not self.alive:
@@ -93,9 +94,15 @@ class NPC(AnimatedSprite):
                 self.animate_pain()
             elif self.ray_cast_value:
                 self.player_search_trigger = True
-                # trigger movement animation when there is a direct line of sight with the playe
-                self.animate(self.walk_images)
-                self.movement()
+
+            # trigger movement animation when there is a direct line of sight with the player
+            # trigger attack if the player is close enough
+                if self.dist < self.attack_dist:
+                    self.animate(self.attack_images)
+                    self.attack()
+                else:
+                    self.animate(self.walk_images)
+                    self.movement()
             elif self.player_search_trigger:
                 self.animate(self.walk_images)
                 self.movement()
