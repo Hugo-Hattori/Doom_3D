@@ -29,8 +29,9 @@ class ObjectHandler:
         add_sprite(AnimatedSprite(game, path=self.animated_sprite_path + 'red_light/0.png', pos=(9.5, 7.5)))
 
         # npc map
-        add_npc(NPC(game))
-        add_npc(NPC(game, pos=(11.5, 4.5)))
+        add_npc(CacoDemonNPC(game))
+        add_npc(SoldierNPC(game, pos=(11.5, 4.5)))
+        add_npc(CyberDemonNPC(game, pos=(13.5, 3)))
 
     def update(self):
         self.npc_positions = {npc.map_pos for npc in self.npc_list if npc.alive}
