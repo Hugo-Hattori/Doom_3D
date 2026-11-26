@@ -29,7 +29,7 @@
 2. PCに Python 3 がインストールされていることを確認します。
 3. ターミナル（またはコマンドプロンプト）で以下のコマンドを実行し、`pygame` をインストールします。
    ```bash
-   pip install pygame
+   pip install pygame-ce
    ```
 4. `main.py` と同じ階層に `resources/` フォルダ（`textures/`, `sprites/`, `sound/` を含む）が配置されていることを確認してください。
 
@@ -95,7 +95,7 @@ python main.py
 2. Ensure Python 3 is installed on your system.
 3. Install the required dependency (`pygame`) via terminal or command prompt:
    ```bash
-   pip install pygame
+   pip install pygame-ce
    ```
 4. Ensure the `resources/` directory (containing `textures/`, `sprites/`, and `sound/`) is located in the root directory alongside `main.py`.
 

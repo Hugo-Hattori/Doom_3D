@@ -58,11 +58,11 @@ class Player:
             dx += -speed_cos
             dy += -speed_sin
         if keys[pg.K_a]:
-            dx += -speed_cos
-            dy += speed_sin
+            dx += speed_sin
+            dy += -speed_cos
         if keys[pg.K_d]:
-            dx += speed_cos
-            dy += -speed_sin
+            dx += -speed_sin
+            dy += speed_cos
 
         #atualiza movimento do personagem
         self.check_wall_collision(dx, dy)

@@ -1,5 +1,3 @@
-from distutils.sysconfig import project_base
-
 import pygame as pg
 import math
 
